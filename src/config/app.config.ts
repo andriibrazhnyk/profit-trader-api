@@ -10,6 +10,6 @@ export const appConfigSchema = {
 };
 
 export const appConfiguration = registerAs(ConfigType.APP, () => ({
-  env: process.env.APP_ENV,
-  port: process.env.APP_PORT,
+  env: process.env.APP_ENV || '',
+  port: Number(process.env.APP_PORT),
 }));
