@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Logger, Module } from '@nestjs/common';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule, ConfigType } from '@nestjs/config';
 import { QuoteController } from './quote.controller';
@@ -23,9 +23,16 @@ import { quotesConfiguration } from 'src/config/quotes.config';
         quoteConfig: ConfigType<typeof quotesConfiguration>,
         httpService: HttpService,
       ) => {
-        return quoteConfig.provider === QuoteProvider.LIVE_RATES
-          ? new LiveRatesProvider(httpService, quoteConfig)
-          : new FakeProvider();
+        const provider =
+          quoteConfig.provider === QuoteProvider.LIVE_RATES
+            ? new LiveRatesProvider(httpService, quoteConfig)
+            : new FakeProvider();
+
+        const logger = new Logger(QuoteModule.name);
+
+        logger.debug(`Current quotes provider: ${provider.constructor.name}`);
+
+        return provider;
       },
       inject: [quotesConfiguration.KEY, HttpService],
     },
