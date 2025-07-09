@@ -87,10 +87,8 @@ export class OrderService {
   private calculateOrderProfit(order: Order, quote: QuoteDto): Big {
     const volume = new Big(order.volume);
     const openPrice = new Big(order.openPrice);
-    const closePriceBig = new Big(
-      this.quoteService.closePrice(quote, order.side),
-    );
+    const closePrice = new Big(this.quoteService.closePrice(quote, order.side));
 
-    return volume.times(closePriceBig.minus(openPrice));
+    return volume.times(closePrice.minus(openPrice));
   }
 }
