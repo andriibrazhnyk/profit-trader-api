@@ -36,6 +36,7 @@ JWT_ACCESS_TOKEN_TTL=1h
 
 # Quotes
 QUOTE_PROVIDER=liveRates
+LIVE_RATE_API_KEY=your-live-rates-api-key
 ```
 
 #### 3. Run database migrations
@@ -90,5 +91,5 @@ Once the server is running, visit `http://localhost:8000/docs` for Swagger docum
 
 You can choose which quote provider to use by setting the `QUOTE_PROVIDER` environment variable in your `.env` file:
 
-- `liveRates` — Fetches real-time quotes from an external API https://live-rates.com (default). It allows only 3 requests per hour.
+- `liveRates` — Fetches real-time quotes from an external API https://live-rates.com (default). It allows only 3 requests per hour without api key.
 - `fake` — Returns static, mock quotes for testing and development
