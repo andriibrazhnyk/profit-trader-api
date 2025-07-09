@@ -91,8 +91,6 @@ export class OrderService {
       this.quoteService.closePrice(quote, order.side),
     );
 
-    const profit = volume.times(closePriceBig.minus(openPrice));
-
-    return profit;
+    return volume.times(closePriceBig.minus(openPrice));
   }
 }
