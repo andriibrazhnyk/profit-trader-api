@@ -24,7 +24,7 @@ import { quotesConfiguration } from 'src/config/quotes.config';
         httpService: HttpService,
       ) => {
         return quoteConfig.provider === QuoteProvider.LIVE_RATES
-          ? new LiveRatesProvider(httpService)
+          ? new LiveRatesProvider(httpService, quoteConfig)
           : new FakeProvider();
       },
       inject: [quotesConfiguration.KEY, HttpService],
