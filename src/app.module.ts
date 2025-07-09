@@ -8,6 +8,7 @@ import { dataSource } from './data-source';
 import { UserModule } from './users/user.module';
 import { AuthModule } from './auth/auth.module';
 import { QuoteModule } from './quotes/quote.module';
+import { OrderModule } from './orders/order.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { QuoteModule } from './quotes/quote.module';
     UserModule,
     AuthModule,
     QuoteModule,
+    OrderModule,
   ],
   controllers: [AppController],
   providers: [AppService],
