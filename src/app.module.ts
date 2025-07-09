@@ -7,6 +7,7 @@ import { configOptions } from './config/index';
 import { dataSource } from './data-source';
 import { UserModule } from './users/user.module';
 import { AuthModule } from './auth/auth.module';
+import { QuoteModule } from './quotes/quote.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { AuthModule } from './auth/auth.module';
     TypeOrmModule.forRoot(dataSource.options),
     UserModule,
     AuthModule,
+    QuoteModule,
   ],
   controllers: [AppController],
   providers: [AppService],
