@@ -19,12 +19,12 @@ export class QuoteService {
     private readonly quoteProvider: QuotesProvider,
   ) {}
 
-  getQuotes(): Promise<QuoteDto[]> {
+  async getQuotes(): Promise<QuoteDto[]> {
     try {
-      return this.quoteProvider.getQuotes();
+      const quotes = await this.quoteProvider.getQuotes();
+      return quotes;
     } catch (error) {
       this.logger.error(error);
-
       throw new ServiceUnavailableException('Try another quotes provider');
     }
   }
